@@ -4,7 +4,7 @@ class InvalidPhoneNumberError(Exception):
     pass
 
 def check(pnumber):
-    pattern = r'\b7[(]?\d{3}[)]?\d{3}[-]?\d{2}[-]?\d{2}\b'
+    pattern = r'(?:\b7[(]\d{3}[)]\d{3}[-]\d{2}[-]\d{2}\b)|(?:\b7\d{3}\d{3}\d{2}\d{2}\b)'
     if re.match(pattern, pnumber):
         return pnumber
     else:
@@ -12,7 +12,7 @@ def check(pnumber):
     
 #7(841)717-25-45
 #78417172545
-#7(841)7172545
+
 pnumber = input("Введите номер: ")
 try:
     valid_number = check(pnumber)
